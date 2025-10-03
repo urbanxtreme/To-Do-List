@@ -41,7 +41,7 @@ h1{
 
 .input-container{
     display:flex;
-    gap: 10px;
+    gap: 10px; 
     margin-bottom:30px;
 }
 
@@ -53,4 +53,189 @@ h1{
     font-size: 16px;
     outline:none;
     transition: all 0.3s ease;
+}
+
+#taskInput:focus{
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#addBtn{
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border:none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#addBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+#addBtn:active{
+    transform: translateY(0);
+}
+
+.stats{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat{
+    text-align: center;
+}
+
+.stat-number{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+#todoList{
+    list-style: none;
+    max-height: 400px;
+    overflow-y:auto; /* i will explain this at the end */
+}
+
+.task-item{
+    background: #f8f9fa;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap:15px;
+    transition: all 0.3s ease;
+    animation: taskSlideIn 0.5s ease-out;
+}
+
+@keyframes taskSlideIn{
+    from{
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.task-item:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed{
+    background: #e8f5e8;
+    opacity: 0.7;
+}
+
+.task-checkbox{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.task-checkbox:hover{
+    border-color: #667eea;
+}
+
+.task-checkbox:checked{
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.task-checkbox:checked::after{
+    content: "✓";
+    position: absolute;
+    color:white;
+    font-size: 12px;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-text{
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.task-item.completed.task-text{
+    text-decoration: line-through;
+    color: #999;
+}
+
+.delete-btn{
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.delete-btn:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.empty-state{
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-size: 16px;
+}
+
+.empty-icon{
+    font-size: 60px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+}
+
+
+/* Responsive Design */
+@media(max-width: 480px){
+    .container{
+        padding: 30px;
+        margin: 10px;
+    }
+    h1{
+        font-size:2em;
+    }
+    .input-container{
+        flex-direction: column;
+    }
+
+    #addBtn{
+        padding: 15px;
+    }
+    .stats{
+        flex-direction: column;
+        gap:10px;
+    }
 }
